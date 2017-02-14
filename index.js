@@ -9,8 +9,7 @@ const options={
 
 export class CustomZoom extends maptalks.control.Control{
     constructor(_options){
-        super();
-        this.options=options||_options;
+        super(_options);
     }
     buildOn(map) {
         this._map = map;
@@ -157,3 +156,5 @@ export class CustomZoom extends maptalks.control.Control{
         }
     }
 }
+
+CustomZoom.mergeOptions(options);
