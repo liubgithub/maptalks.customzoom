@@ -19,9 +19,9 @@
         }
     </style>
    <link type="text/css" rel="stylesheet" href="https://unpkg.com/maptalks@<2.0.0/dist/maptalks.css">
-   <link type="text/css" rel="stylesheet" href="../resource/css/customzoom.css">
-   <script type="text/javascript" src="https://unpkg.com/maptalks@<2.0.0/dist/maptalks.min.js"></script>
-   <script type="text/javascript" src="..dist/maptalks.customzoom.min.js"></script>
+    <link href="customzoom.css" rel="stylesheet" />
+    <script src="maptalks.js"></script>
+    <script src="../dist/maptalks.customzoom.js"></script>
     <script src="jquery-1.9.1.min.js"></script>
     <script type="text/javascript">
         var map;
@@ -58,12 +58,14 @@
                     urlTemplate: 'http://117.36.75.134:6080/arcgis/rest/services/LT/DeepBlueMap0928touming/MapServer/tile/{z}/{y}/{x}'
                 })
             });
-
         }
 
         $(function () {
             initMap();
-            var customZoom = new maptalks.CustomZoom();
+            var customZoom = new maptalks.CustomZoom({
+                left: 400,
+                top:300
+            });
             map.addControl(customZoom);
         });
     </script>
