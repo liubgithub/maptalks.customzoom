@@ -16,7 +16,7 @@ import * as maptalks from 'maptalks';
 const options = {
     'position': { top: 100, left: 200 },
     'slider': true,
-    'zoomLevel': true,
+    'zoomLevel': false,
     'navPan': true
 };
 
@@ -24,24 +24,27 @@ const UNIT = 10;
 
 /**
  * @classdesc
- * A zoom control with buttons to zoomin/zoomout and a slider indicator for the zoom level.
+ * A custom zoom control which is designed specially.
  * @category control
  * @extends control.Control
  * @memberOf control
  * @example
- * const zoomControl = new Zoom({
+ * const zoomControl = new CustomZoom({
  *     position : 'top-left',
  *     slider : true,
  *     zoomLevel : false
  * }).addTo(map);
  */
 export class CustomZoom extends maptalks.control.Control {
+
+    constructor(options = {}) {
+        super(options);
+    }
     /**
      * method to build DOM of the control
      * @param  {Map} map map to build on
      * @return {HTMLDOMElement}
      */
-
     buildOn(map) {
         const options = this.options;
 
@@ -101,7 +104,6 @@ export class CustomZoom extends maptalks.control.Control {
     }
 
     _createNavPan(map, dom) {
-        //const level = this._map.getZoom();
         const panDOM = maptalks.DomUtil.createEl('div', 'maptalks-zoom-zoomPan-custom');
         const leftPan = maptalks.DomUtil.createEl('div', 'maptalks-zoom-zoomPan-left-custom');
         leftPan.onmouseover = function () {
@@ -112,7 +114,7 @@ export class CustomZoom extends maptalks.control.Control {
         };
         leftPan.onclick = function () {
             this._PanTo({
-                x:200,
+                x:-200,
                 y:0
             });
         }.bind(this);
@@ -125,7 +127,7 @@ export class CustomZoom extends maptalks.control.Control {
         };
         rightPan.onclick = function () {
             this._PanTo({
-                x:-200,
+                x:200,
                 y:0
             });
         }.bind(this);
@@ -139,7 +141,7 @@ export class CustomZoom extends maptalks.control.Control {
         upPan.onclick = function () {
             this._PanTo({
                 x:0,
-                y:200
+                y:-200
             });
         }.bind(this);
         const downPan = maptalks.DomUtil.createEl('div', 'maptalks-zoom-zoomPan-down-custom');
@@ -152,7 +154,7 @@ export class CustomZoom extends maptalks.control.Control {
         downPan.onclick = function () {
             this._PanTo({
                 x:0,
-                y:-200
+                y:200
             });
         }.bind(this);
         panDOM.appendChild(upPan);
@@ -164,13 +166,6 @@ export class CustomZoom extends maptalks.control.Control {
     }
 
     _PanTo(offset) {
-        //const map = this.getMap();
-        //this._panCoord = (!this._panCoord) ? map.getCenter() : this._panCoord;
-        //const _panPoint = map.coordinateToPoint(this._panCoord);
-        //_panPoint.x += offset.x;
-        //_panPoint.y += offset.y;
-        //this._panCoord = map.pointToCoordinate(_panPoint, map.getZoom());
-        //map.panTo(this._panCoord);
         const map = this.getMap();
         let _panCoord =  map.getCenter();
         const _panPoint = map.coordinateToPoint(_panCoord);
@@ -188,7 +183,7 @@ export class CustomZoom extends maptalks.control.Control {
             this._sliderRuler.style.height = totalRange + 14 + 'px';
             const zoomRange = (map.getZoom() - map.getMinZoom()) * pxUnit;
             this._sliderReading.style.height = zoomRange + 'px';
-            this._sliderDot.style.bottom = zoomRange + 'px';
+            this._sliderDot.style.top = (totalRange - zoomRange) + 'px';
         }
     }
 
@@ -210,7 +205,7 @@ export class CustomZoom extends maptalks.control.Control {
         if (this._zoomOutButton) {
             maptalks.DomUtil.on(this._zoomOutButton, 'click', this._onZoomOutClick, this);
         }
-        /*if (this._sliderRuler) {
+        if (this._sliderRuler) {
             maptalks.DomUtil.on(this._sliderRuler, 'click', this._onClickRuler, this);
             this.dotDragger = new maptalks.DragHandler(this._sliderDot, {
                 'ignoreMouseleave' : true
@@ -218,7 +213,7 @@ export class CustomZoom extends maptalks.control.Control {
             this.dotDragger.on('dragstart', this._onDotDragstart, this)
                 .on('dragend', this._onDotDrag, this)
                 .enable();
-        }*/
+        }
     }
 
     _onZoomInClick(e) {

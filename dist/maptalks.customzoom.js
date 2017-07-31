@@ -36,7 +36,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var options = {
     'position': { top: 100, left: 200 },
     'slider': true,
-    'zoomLevel': true,
+    'zoomLevel': false,
     'navPan': true
 };
 
@@ -44,12 +44,12 @@ var UNIT = 10;
 
 /**
  * @classdesc
- * A zoom control with buttons to zoomin/zoomout and a slider indicator for the zoom level.
+ * A custom zoom control which is designed specially.
  * @category control
  * @extends control.Control
  * @memberOf control
  * @example
- * const zoomControl = new Zoom({
+ * const zoomControl = new CustomZoom({
  *     position : 'top-left',
  *     slider : true,
  *     zoomLevel : false
@@ -59,16 +59,18 @@ var CustomZoom = function (_maptalks$control$Con) {
     _inherits(CustomZoom, _maptalks$control$Con);
 
     function CustomZoom() {
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
         _classCallCheck(this, CustomZoom);
 
-        return _possibleConstructorReturn(this, _maptalks$control$Con.apply(this, arguments));
+        return _possibleConstructorReturn(this, _maptalks$control$Con.call(this, options));
     }
-
     /**
      * method to build DOM of the control
      * @param  {Map} map map to build on
      * @return {HTMLDOMElement}
      */
+
 
     CustomZoom.prototype.buildOn = function buildOn(map) {
         var options = this.options;
@@ -129,7 +131,6 @@ var CustomZoom = function (_maptalks$control$Con) {
     };
 
     CustomZoom.prototype._createNavPan = function _createNavPan(map, dom) {
-        //const level = this._map.getZoom();
         var panDOM = maptalks.DomUtil.createEl('div', 'maptalks-zoom-zoomPan-custom');
         var leftPan = maptalks.DomUtil.createEl('div', 'maptalks-zoom-zoomPan-left-custom');
         leftPan.onmouseover = function () {
@@ -140,7 +141,7 @@ var CustomZoom = function (_maptalks$control$Con) {
         };
         leftPan.onclick = function () {
             this._PanTo({
-                x: 200,
+                x: -200,
                 y: 0
             });
         }.bind(this);
@@ -153,7 +154,7 @@ var CustomZoom = function (_maptalks$control$Con) {
         };
         rightPan.onclick = function () {
             this._PanTo({
-                x: -200,
+                x: 200,
                 y: 0
             });
         }.bind(this);
@@ -167,7 +168,7 @@ var CustomZoom = function (_maptalks$control$Con) {
         upPan.onclick = function () {
             this._PanTo({
                 x: 0,
-                y: 200
+                y: -200
             });
         }.bind(this);
         var downPan = maptalks.DomUtil.createEl('div', 'maptalks-zoom-zoomPan-down-custom');
@@ -180,7 +181,7 @@ var CustomZoom = function (_maptalks$control$Con) {
         downPan.onclick = function () {
             this._PanTo({
                 x: 0,
-                y: -200
+                y: 200
             });
         }.bind(this);
         panDOM.appendChild(upPan);
@@ -192,13 +193,6 @@ var CustomZoom = function (_maptalks$control$Con) {
     };
 
     CustomZoom.prototype._PanTo = function _PanTo(offset) {
-        //const map = this.getMap();
-        //this._panCoord = (!this._panCoord) ? map.getCenter() : this._panCoord;
-        //const _panPoint = map.coordinateToPoint(this._panCoord);
-        //_panPoint.x += offset.x;
-        //_panPoint.y += offset.y;
-        //this._panCoord = map.pointToCoordinate(_panPoint, map.getZoom());
-        //map.panTo(this._panCoord);
         var map = this.getMap();
         var _panCoord = map.getCenter();
         var _panPoint = map.coordinateToPoint(_panCoord);
@@ -217,7 +211,7 @@ var CustomZoom = function (_maptalks$control$Con) {
             this._sliderRuler.style.height = totalRange + 14 + 'px';
             var zoomRange = (map.getZoom() - map.getMinZoom()) * pxUnit;
             this._sliderReading.style.height = zoomRange + 'px';
-            this._sliderDot.style.bottom = zoomRange + 'px';
+            this._sliderDot.style.top = totalRange - zoomRange + 'px';
         }
     };
 
@@ -239,15 +233,13 @@ var CustomZoom = function (_maptalks$control$Con) {
         if (this._zoomOutButton) {
             maptalks.DomUtil.on(this._zoomOutButton, 'click', this._onZoomOutClick, this);
         }
-        /*if (this._sliderRuler) {
+        if (this._sliderRuler) {
             maptalks.DomUtil.on(this._sliderRuler, 'click', this._onClickRuler, this);
             this.dotDragger = new maptalks.DragHandler(this._sliderDot, {
-                'ignoreMouseleave' : true
+                'ignoreMouseleave': true
             });
-            this.dotDragger.on('dragstart', this._onDotDragstart, this)
-                .on('dragend', this._onDotDrag, this)
-                .enable();
-        }*/
+            this.dotDragger.on('dragstart', this._onDotDragstart, this).on('dragend', this._onDotDrag, this).enable();
+        }
     };
 
     CustomZoom.prototype._onZoomInClick = function _onZoomInClick(e) {
