@@ -63,8 +63,10 @@
         $(function () {
             initMap();
             var customZoom = new maptalks.CustomZoom({
-                right: 400,
-                top:300
+                position: {
+                    left: 100,
+                    top: 50
+                }
             });
             map.addControl(customZoom);
         });

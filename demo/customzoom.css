@@ -24,7 +24,7 @@
     height:117px;
 }
 .maptalks-zoom-slider-ruler-custom{
-    background:url(http://s.map.qq.com/themes/default/img/nav.png?v=v4.2.39);
+    background:url(nav.png);
     background-position:-36px -80px;
     width:8px;
     height:117px;
@@ -33,7 +33,7 @@
 }
 
 .maptalks-zoom-slider-reading-custom{
-    background-image:url(http://s.map.qq.com/themes/default/img/nav.png?v=v4.2.39);
+    background-image:url(nav.png);
     background-position:-10px -114px;
     /*width:8px;
     height:81px;*/
@@ -44,7 +44,7 @@
     left: 1px;          
 }
 .maptalks-zoom-slider-dot-custom{
-    background-image: url(http://s.map.qq.com/themes/default/img/nav.png?v=v4.2.39);
+    background-image: url(nav.png);
     background-position: -53px -56px;
     bottom: 45%;
     position:absolute;
@@ -54,7 +54,7 @@
     cursor: pointer;
 }
 .maptalks-zoom-zoomin-custom{
-    background-image: url(http://s.map.qq.com/themes/default/img/nav.png?v=v4.2.39);
+    background-image: url(nav.png);
     background-position: -1px -56px;
     width: 26px;
     height: 24px;
@@ -63,14 +63,14 @@
 }
 .maptalks-zoom-zoomout-custom{
     display: block;
-    background-image: url(http://s.map.qq.com/themes/default/img/nav.png?v=v4.2.39);
-    background-position: -1px -198px;
+    background-image: url(nav.png);
+    background-position: -1px -266px;
     width: 26px;
     height: 26px;
     cursor: pointer;
 }
 .maptalks-zoom-zoomPan-custom{
-    background-image: url(http://s.map.qq.com/themes/default/img/nav.png?v=v4.2.39);
+    background-image: url(nav.png);
     background-position: 0px 0px;
     width: 56px;
     height: 56px;
@@ -78,7 +78,7 @@
 }
 .maptalks-zoom-zoomPan-left-custom{
     position:absolute;
-    background-image: url(http://s.map.qq.com/themes/default/img/nav.png?v=v4.2.39);
+    background-image: url(nav.png);
     background-position: -5px -19px;
     width: 17px;
     height: 18px;
@@ -88,7 +88,7 @@
 }
 .maptalks-zoom-zoomPan-right-custom{
    position:absolute;
-   background-image: url(http://s.map.qq.com/themes/default/img/nav.png?v=v4.2.39);
+   background-image: url(nav.png);
     background-position: -36px -19px;
     width: 17px;
     height: 18px;
@@ -98,7 +98,7 @@
 }
 .maptalks-zoom-zoomPan-up-custom{
     position:absolute;
-    background-image: url(http://s.map.qq.com/themes/default/img/nav.png?v=v4.2.39);
+    background-image: url(nav.png);
     background-position: -19px -5px;
     width: 20px;
     height: 18px;
@@ -108,7 +108,7 @@
 }
 .maptalks-zoom-zoomPan-down-custom{
     position:absolute;
-    background-image: url(http://s.map.qq.com/themes/default/img/nav.png?v=v4.2.39);
+    background-image: url(nav.png);
     background-position: -19px -32px;
     width: 20px;
     height: 18px;

@@ -34,7 +34,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @instance
  */
 var options = {
-    'position': { top: 100, left: 200 },
+    'position': 'top-left',
     'slider': true,
     'zoomLevel': false,
     'navPan': true

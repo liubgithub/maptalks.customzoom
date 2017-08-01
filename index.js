@@ -14,7 +14,7 @@ import * as maptalks from 'maptalks';
  * @instance
  */
 const options = {
-    'position': { top: 100, left: 200 },
+    'position': 'top-left',
     'slider': true,
     'zoomLevel': false,
     'navPan': true
