@@ -25,7 +25,8 @@ As a plugin, ```maptalks.customzoom``` must be loaded after ```maptalks.js``` in
 var zoom = new maptalks.CustomZoom({position: {
                     left: 100,
                     top: 50
-                }).addTo(map);
+                }
+            }).addTo(map);
 </script>
 ```
 
@@ -35,7 +36,7 @@ IE 9-11, Chrome, Firefox, other modern and mobile browsers.
 
 ## API Reference
 
-```ClusterLayer``` is a subclass of [maptalks.control.Control](https://maptalks.github.io/docs/api/Control.html) and inherits all the methods of its parent.
+```CustomZoom``` is a subclass of [maptalks.control.Control](https://maptalks.github.io/docs/api/Control.html) and inherits all the methods of its parent.
 
 ### `Constructor`
 

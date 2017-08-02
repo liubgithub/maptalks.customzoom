@@ -1,5 +1,5 @@
 /*!
- * maptalks.customzoom v0.5.0
+ * maptalks.customzoom v0.1.0
  * LICENSE : MIT
  * (c) 2016-2017 maptalks.org
  */
@@ -309,6 +309,6 @@ exports.CustomZoom = CustomZoom;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-typeof console !== 'undefined' && console.log('maptalks.customzoom v0.5.0, requires maptalks@^0.25.0.');
+typeof console !== 'undefined' && console.log('maptalks.customzoom v0.1.0, requires maptalks@^0.25.0.');
 
 })));
