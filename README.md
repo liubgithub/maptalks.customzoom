@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/maptalks/maptalks.customzoom.svg?style=shield)](https://circleci.com/gh/MapTalks/maptalks.customzoom)
 [![NPM Version](https://img.shields.io/npm/v/maptalks.customzoom.svg)](https://github.com/maptalks/maptalks.customzoom)
 
-A plugin of [maptalks.js](https://github.com/maptalks/maptalks.js) to set a custom zoom control which is different from maptalks's zoom control.
+A plugin of [maptalks.js](https://github.com/maptalks/maptalks.js) to set a custom zoom control which is different from maptalks's zoom control，and update some functions.
 
 ## Examples
 
